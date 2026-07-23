@@ -41,8 +41,8 @@ const MODE_CODE: Record<Mode, number> = {
 let loginAt = Date.now();
 let refreshedAt = loginAt;
 let account = await login(email, password);
-const { userId } = await getUserInfo(account.accessToken);
-console.info(account);
+const { userId, email: _email } = await getUserInfo(account.accessToken);
+console.info('[INFO] Logged in as ' + _email + ' (' + userId + ')');
 
 const client = new OpenAPIClient(token, secret);
 let state: State = await getAirConStatus(true);
