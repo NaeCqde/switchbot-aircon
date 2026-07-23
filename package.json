@@ -9,7 +9,8 @@
         "build": "bun build index.ts --compile --outfile switchbot-aircon"
     },
     "devDependencies": {
-        "@types/bun": "latest"
+        "@types/bun": "latest",
+        "@types/node": "^26.1.1"
     },
     "peerDependencies": {
         "typescript": "^5"
