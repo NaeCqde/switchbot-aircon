@@ -175,8 +175,8 @@ app.get('/fan-speed', async (c) => {
     }
 });
 app.all('/fan-speed/:fanSpeed', async (c) => {
-    const fanSpeed = Number(c.req.param('fanSpeed'));
-    if (!Number.isFinite(fanSpeed) || fanSpeed < 0 || fanSpeed > 5) {
+    const fanSpeed = Number(c.req.param('fanSpeed') || NaN);
+    if (!Number.isInteger(fanSpeed) || fanSpeed < 0 || fanSpeed > 5) {
         return c.text('[ERROR] fan-speed must be 0 (auto) or a number between 1 and 5.', 400);
     }
 
@@ -227,8 +227,8 @@ app.all('/parameter/:parameter', async (c) => {
     }
     const mode = modeStr;
 
-    const fanSpeed = Number(fanSpeedStr);
-    if (!Number.isFinite(fanSpeed) || fanSpeed < 0 || fanSpeed > 5) {
+    const fanSpeed = Number(fanSpeedStr || NaN);
+    if (!Number.isInteger(fanSpeed) || fanSpeed < 0 || fanSpeed > 5) {
         return c.text('[ERROR] fan-speed must be 0 (auto) or a number between 1 and 5.', 400);
     }
 
@@ -236,7 +236,9 @@ app.all('/parameter/:parameter', async (c) => {
         return c.text("[ERROR] power must be 'on' or 'off'", 400);
     }
 
-    console.info('[INFO] Changing aircon parameter to ' + parameter + ' for device ' + deviceId);
+    console.info(
+        `[INFO] Changing aircon parameter to ${temperature},${mode},${fanSpeed},${power} for device ${deviceId}`,
+    );
 
     state.temperature = temperature;
     state.mode = mode;
