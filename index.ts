@@ -99,7 +99,7 @@ async function getAirConStatus(first: boolean = false): Promise<State> {
 }
 
 function isMode(value: string): value is Mode {
-    return value in MODE_CODE;
+    return Object.hasOwn(MODE_CODE, value);
 }
 
 async function applyState() {
