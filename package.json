@@ -1,5 +1,6 @@
 {
     "name": "switchbot-aircon",
+    "license": "MIT",
     "module": "index.ts",
     "type": "module",
     "scripts": {
