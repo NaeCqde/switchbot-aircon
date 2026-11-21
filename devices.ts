@@ -1,3 +1,4 @@
+import "./settings.js";
 import { OpenAPIClient } from "node-switchbot/dist/api.js";
 
 const token = process.env.SWITCHBOT_TOKEN;
