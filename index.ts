@@ -1,3 +1,4 @@
+import './settings.js';
 import { Hono } from 'hono';
 import { OpenAPIClient } from 'node-switchbot/dist/api.js';
 
